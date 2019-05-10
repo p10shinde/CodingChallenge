@@ -1,0 +1,47 @@
+<h2 class="mat-display-1">City Name : Dublin (longi, lati)</h2>
+
+<div class="controls">
+  <form class="example-form">
+    <mat-form-field class="app-full">
+      <mat-label>Distance Limit</mat-label>
+      <input type="number" matInput>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color="primary" class="checkCrowd">Check crowd!</button>
+</div>
+
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource.length > 0">
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.user_id}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Latitude Column -->
+  <ng-container matColumnDef="latitude">
+    <mat-header-cell *matHeaderCellDef> Latitude </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.latitude}} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="longitude">
+    <mat-header-cell *matHeaderCellDef> Longitude </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.longitude}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<div *ngIf="!dataSource.length" class="emptyTable">
+  <img src="../../assets/images/empty.jpg" alt="">
+  <p>No one is available. Looks like party is going to be dry !!!</p>
+
+</div>
