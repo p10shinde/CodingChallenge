@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, of } from 'rxjs';
+import { HelperFunc } from './HelperFunc';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
+// Dubline
+// 55.339428, -6.257664
+
 export class DataService {
   customers: Customer[] =  [
     {latitude: '52.986375', user_id: 12, name: 'Christina McArdle', longitude: '-6.043701'},
@@ -40,7 +46,8 @@ export class DataService {
     {latitude: '52.833502', user_id: 25, name: 'David Behan', longitude: '-8.522366'}
   ];
   customerSubject = new Subject<Customer[]>();
-  constructor() { }
+  dist: number;
+  constructor(private helper: HelperFunc) { }
 
   getSortedData(customers: Customer[]) {
     return customers.sort( (a, b) => {
@@ -56,8 +63,14 @@ export class DataService {
     return this.customerSubject.asObservable();
   }
 
-  pop() {
-    this.customers.shift();
-    this.customerSubject.next(this.customers);
+  getCustomersInRange(defDes, distance: number) {
+
+    const selectedCustomer = [];
+    this.customers.forEach(customer => {
+      if (this.helper.getDistanceInKm(defDes.latitude, defDes.longitude, customer.latitude, customer.longitude) <= Number(distance)) {
+        selectedCustomer.push(customer);
+      }
+    });
+    this.customerSubject.next(selectedCustomer);
   }
 }

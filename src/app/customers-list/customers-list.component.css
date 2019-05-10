@@ -1,0 +1,37 @@
+.mat-h3 {
+  font-weight: 500;
+}
+mat-table {
+  width: 100%;
+  margin-top: 1em;
+}
+.emptyTable {
+  text-align: center;
+  padding: 2em;
+}
+.emptyTable p {
+  padding: 1em;
+}
+.controls {
+  width: 100%;
+  margin-bottom: 2em;
+}
+.controls form {
+  width: 70%;
+  display: inline-block;
+}
+.controls form .app-full {
+  width: 100%;
+}
+.controls button {
+  display: inline-block;
+}
+.controls .checkCrowd {
+  float: right;
+}
+.idColumn {
+  flex: 0 0 75px;
+}
+.latLonColumn {
+  flex: 0 0 100px;
+}

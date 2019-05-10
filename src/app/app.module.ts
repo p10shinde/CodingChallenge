@@ -9,6 +9,8 @@ import { CustomersListComponent } from './customers-list/customers-list.componen
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule, MatButtonModule, MatFormFieldModule } from '@angular/material';
 
+import { HelperFunc } from './HelperFunc';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,7 @@ import { MatInputModule, MatButtonModule, MatFormFieldModule } from '@angular/ma
     MatButtonModule,
     MatFormFieldModule
   ],
-  providers: [],
+  providers: [HelperFunc],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
