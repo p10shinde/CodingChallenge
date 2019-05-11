@@ -23,9 +23,4 @@ describe('CustomersListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have "displayedColumns", default "distance", default "destination"', async () => {
-    fixture = TestBed.createComponent(CustomersListComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.displayedColumns).toEqual(['id', 'name', 'latitude', 'longitude']);
-  });
 });
